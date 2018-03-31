@@ -4,55 +4,104 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace QuickSort.Tests
 {
     [TestClass]
-    public class QuickSortTest
-    {
+   public class QuickSortTest
+   {
         [TestMethod]
-        public void TestThreeElements()
+        public void TestThreeMassive()
         {
-            var result = Program.Sort(3, 0, 100);
-            var boolTemp = false;
-            if ((result[0] < result[1]) & (result[1] < result[2]))
-                boolTemp = true;
-            Assert.AreEqual(true, boolTemp);
+            int[] wtfMassive = new int[3];
+            var array = new Random();
+            var boolElement = false;
+
+            for (int i = 0; i< 3; i++)
+                wtfMassive[i] = array.Next();
+           Program.QuickSort(wtfMassive);
+            
+            if (wtfMassive[0] <= wtfMassive[1] && wtfMassive[1] <= wtfMassive[2])
+                boolElement = true;
+            Assert.AreEqual(true, boolElement);
         }
 
         [TestMethod]
-        public void TestHundredElements()
+        public void TestHundredMassive()
         {
-            var result = Program.Sort(100, 3, 3);
-            var boolTemp = false;
-            if ((result[10] == result[50]) & (result[18] == result[95]))
-                boolTemp = true;
-            Assert.AreEqual(true, boolTemp);
+            int[] wtfMassive = new int[100];
+            var boolElement = false;
+
+            for (int i = 0; i< wtfMassive.Length; i++)
+                wtfMassive[i] = 1;
+
+            Program.QuickSort(wtfMassive);
+            for (int i = 0; i< wtfMassive.Length - 1; i++)
+            {
+               if (wtfMassive[i] > wtfMassive[i + 1])
+                {
+                    boolElement = true;
+                    break;
+                }
+            }
+            Assert.AreEqual(false, boolElement);
         }
 
         [TestMethod]
-        public void TestOneThousandElements()
+        public void TestOneThousandMassive()
         {
-            var result = Program.Sort(1000, 0, 100);
-            var boolTemp = false;
-            if ((result[10] <= result[50]) && (result[18] <= result[95]) && (result[3] <= result[5]) && (result[9] <= result[81]) && (result[25] <= result[36]) && (result[13] <= result[44]) && (result[55] <= result[77]) && (result[0] <= result[1]) && (result[8] <= result[10]) && (result[56] <= result[85]))
-                boolTemp = true;
-            Assert.AreEqual(true, boolTemp);
+            var array = new Random();
+            int size = 1000;
+            int[] wtfMassive = new int[size];
+            var boolElement = false;
+
+            for (int i = 0; i<size; i++)
+                wtfMassive[i] = array.Next();
+
+            Program.QuickSort(wtfMassive);
+            for (int i = 0; i< 10; i++)
+            {
+                int j = array.Next(0, 998);
+                if (wtfMassive[j] > wtfMassive[j + 1])
+                {
+                    boolElement = true;
+                    break;
+                }
+            }
+            Assert.AreEqual(false, boolElement);
         }
 
         [TestMethod]
-        public void TestNullMassive()
+        public void TestEmptyMassive()
         {
-            var result = Program.Sort(0, 0, 0);
+            int[] wtfMassive = new int[0];
+            var boolElement = false;
+            Program.QuickSort(wtfMassive);
 
-            Assert.AreEqual(0 , result.Length);
+            if (wtfMassive.Length == 0)
+                boolElement = true;
+
+            Assert.AreEqual(true, boolElement);
         }
 
-        //[TestMethod]
-        //public void TestMostElements()
-        //{
-        //    var result = Program.Sort(1500000000, 1, 100);
-        //    var boolTemp = false;
-        //    for (int i = 0; i < result.Length; i++)
-        //        if (result[i] <= result[i + 1])
-        //            boolTemp = true;
-        //    Assert.AreEqual(true, boolTemp);
-        //}
+        [TestMethod]
+        public void TestHugeMassive()
+        {
+            var array = new Random();
+           int size = 1500000000;
+            int[] wtfMassive = new int[size];
+            var boolElement = false;
+
+            for (int i = 0; i<size; i++)
+                wtfMassive[i] = array.Next();
+            Program.QuickSort(wtfMassive);
+
+            for (int i = 0; i< 10; i++)
+            {
+                int j = array.Next(0, 1500000000 - 2);
+               if (wtfMassive[j] > wtfMassive[j + 1])
+                {
+                    boolElement = true;
+                    break;
+                }
+            }
+            Assert.AreEqual(false, boolElement);
+        }   
     }
 }
