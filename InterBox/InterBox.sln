@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterBox", "InterBox\InterBox.csproj", "{0C780480-9BFC-4277-A288-8B0B0DF128AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxExpress", "BoxExpress\BoxExpress.csproj", "{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C780480-9BFC-4277-A288-8B0B0DF128AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C780480-9BFC-4277-A288-8B0B0DF128AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C780480-9BFC-4277-A288-8B0B0DF128AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C780480-9BFC-4277-A288-8B0B0DF128AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
