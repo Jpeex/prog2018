@@ -7,12 +7,14 @@ using System.IO;
 
 namespace BoxExpress
 {
-    public interface IBoxi
-    {
-        void SaveContent(string content, string filePath);
-        void SaveContent(string content, string filePath, Encoding encoding);
-        bool IsExist(string filePath);
-    }
+    //public interface IBoxi
+    //{
+    //    string GetContent(string filePath);
+    //    string GetContent(string filePath, Encoding encoding);
+    //    void SaveContent(string content, string filePath);
+    //    void SaveContent(string content, string filePath, Encoding encoding);
+    //    bool IsExist(string filePath);
+    //}
 
     // Заявка на покупку товара в онлайн-магазине
 
@@ -25,10 +27,10 @@ namespace BoxExpress
         public DateTime Date { get; set; }
 
         // Желаемый Товар
-        public List<Product> Product { get; set; }
+        public Product Product { get; set; }
 
         // Адрес получателя
-        public List<Address> Address { get; set; }
+        public Address Address { get; set; }
     }
 
     // Информация о товаре
@@ -46,13 +48,14 @@ namespace BoxExpress
         // Количество
         public int Count { get; set; }
 
+
     }
 
     // Информация об адресе
     public class Address
     {
         // Страна получателя
-        public Сountry Сountry { get; set; }
+        public Сountry Gos { get; set; }
 
         // Область получателя
         public string Region { get; set; }
@@ -61,10 +64,12 @@ namespace BoxExpress
         public string City { get; set; }
 
         // Почтовый индекс
-        public int Index { get; set; }
+        public string Index { get; set; }
 
         // Контактный телефон
         public string Phone { get; set; }
+
+
     }
     public enum Сountry
     {
@@ -78,22 +83,31 @@ namespace BoxExpress
         Clothes,
         Cosmetics,
     }
-        public class MainBox: IBoxi
-        {
-            private readonly Encoding _defaultEncoding = Encoding.GetEncoding(1251);
+        //public class MainBox: IBoxi
+        //{
+        //    private readonly Encoding _defaultEncoding = Encoding.GetEncoding(1251);
 
-            public bool IsExist(string filePath)
-            {
-                bool isExist = File.Exists(filePath);
-                return isExist;
-            }
-            public void SaveContent(string content, string filePath)
-            {
-                SaveContent(content, filePath, _defaultEncoding);
-            }
-            public void SaveContent(string content, string filePath, Encoding encoding)
-            {
-                File.WriteAllText(filePath, content, encoding);
-            }
-        }
+        //    public bool IsExist(string filePath)
+        //    {
+        //        bool isExist = File.Exists(filePath);
+        //        return isExist;
+        //    }
+        //public string GetContent(string filePath)
+        //{
+        //    return GetContent(filePath, _defaultEncoding);
+        //}
+        //public string GetContent(string filePath, Encoding encoding)
+        //{
+        //    string content = File.ReadAllText(filePath, encoding);
+        //    return content;
+        //}
+        //    public void SaveContent(string content, string filePath)
+        //    {
+        //        SaveContent(content, filePath, _defaultEncoding);
+        //    }
+        //    public void SaveContent(string content, string filePath, Encoding encoding)
+        //    {
+        //        File.WriteAllText(filePath, content, encoding);
+        //    }
+        //}
 }

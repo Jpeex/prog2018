@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterBox", "InterBox\InterB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxExpress", "BoxExpress\BoxExpress.csproj", "{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPresentor", "MPresentor\MPresentor.csproj", "{06E5012B-54B8-444B-899F-ADBACE0B2E29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D59FCD3-366D-499D-B596-B1B48E6D3E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06E5012B-54B8-444B-899F-ADBACE0B2E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E5012B-54B8-444B-899F-ADBACE0B2E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E5012B-54B8-444B-899F-ADBACE0B2E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E5012B-54B8-444B-899F-ADBACE0B2E29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
