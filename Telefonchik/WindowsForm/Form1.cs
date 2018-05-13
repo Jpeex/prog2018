@@ -169,7 +169,6 @@ namespace WindowsForm
             if (x != -1 )
             {
                 textBox2.Text = newPhone[x].Number;
-
             }
             else if (y != -1)
                 textBox1.Text = newPhone[y].Name;
