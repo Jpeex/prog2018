@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
+
 
 namespace WindowsForm
 {
@@ -15,7 +17,6 @@ namespace WindowsForm
     {
         public string Name;
         public string Number;
-
     }
 
     public partial class Form1 : Form
@@ -29,114 +30,57 @@ namespace WindowsForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if ((textBox1.Text == null) || (textBox2.Text == null))
+            string t1 = textBox1.Text;
+            string t2 = textBox2.Text;
+            int count = 0;
+            for (int i = 0; i < t2.Length; ++i)
             {
-                MessageBox.Show("Ошибка данных. \n" + "Необходимо ввести данные во все поля.", "Справочник", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            else
-            {
-                string t1 = textBox1.Text;
-                string textik = File.ReadAllText("C:/Users/jurav/Desktop/text1.txt.txt");
-                using (StreamReader read = new StreamReader(("C:/Users/jurav/Desktop/text1.txt.txt")))
+                if (char.IsLetter(t2[i]))
                 {
-                    if (textik.Contains(t1))
-                    {
-                        MessageBox.Show("В меня такой же не влезет");
-                    }
-                    else
-                    {
-
-                        Phone x;
-                        x.Name = textBox1.Text;
-                        x.Number = textBox2.Text;
-                        int x1 = search(x.Name); 
-
-
-                        //MessageBox.Show("Контакт сохранен");
-
-                        if (x1 == -1)
-                        {
-                            newPhone.Add(x);
-                            //textBox1.Text = "";
-                            //textBox2.Text = "";
-                            //MessageBox.Show("Записал");
-                            read.Close();
-                            System.IO.StreamWriter write = new System.IO.StreamWriter("C:/Users/jurav/Desktop/text1.txt.txt", true);
-                            write.WriteLine(textBox1.Text);
-                            write.WriteLine(textBox2.Text);
-                            write.Close();
-                            textBox1.Text = "";
-                            textBox2.Text = "";
-                            MessageBox.Show("Записал");
-                        }
-                        else
-                        {
-                            MessageBox.Show("В меня такой же не влезет");
-                        }
-                    }
+                    count++;
                 }
             }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            newPhone.Clear();
-            Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            StreamReader readd = new StreamReader("C:/Users/jurav/Desktop/text1.txt.txt");
-            string m;
-            while ((m = readd.ReadLine())!=null)
-            {
-                Phone ss;
-                ss.Name = m;
-                ss.Number = readd.ReadLine();
-                newPhone.Add(ss);
-            }
-            readd.Close(); 
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if ((textBox1.Text == null) || (textBox2.Text == null))
+            if (String.IsNullOrEmpty(t1) || String.IsNullOrEmpty(t2))
             {
                 MessageBox.Show("Ошибка данных. \n" + "Необходимо ввести данные во все поля.", "Справочник", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-            else
-            {
-                Phone x;
-                x.Name = textBox1.Text;
-                x.Number = textBox2.Text;
-                int x1 = search(x.Name);
-                if (x1 == -1)
-                {
-                    newPhone.Add(x);
-                    textBox1.Text = "";
-                    textBox2.Text = "";
-                    MessageBox.Show("Контакт внесён");
 
+            else if (count == 0)
+            {
+                string st1 = textBox1.Text;
+                string textik = File.ReadAllText("Begin");
+                if (textik.Contains(st1))
+                {
+                    MessageBox.Show("В меня такой же не влезет");
                 }
                 else
                 {
-                    MessageBox.Show("Данный контакт существует");
+                    Phone x;
+                    x.Name = textBox1.Text;
+                    x.Number = textBox2.Text;
+                    int x1 = search(x.Name);
+
+                    if (x1 == -1)
+                    {
+                        newPhone.Add(x);
+                        System.IO.StreamWriter write = new System.IO.StreamWriter("Begin", true);
+                        write.WriteLine(textBox1.Text);
+                        write.WriteLine(textBox2.Text);
+                        write.Close();
+                        textBox1.Text = "";
+                        textBox2.Text = "";
+                        MessageBox.Show("Внесен в блокнотик. Не долго ему осталось...");
+                    }
+                    else
+                    {
+                        MessageBox.Show("В меня такой же не влезет");
+                    }
                 }
             }
+            else
+                MessageBox.Show("В номерок буковка попала, так не пойдет");
         }
 
-        private void button7_Click(object sender, EventArgs e) 
-        {
-            //textBox1.Text = null;
-            //textBox2.Text = null;
-
-        }
         int search(string s)
         {
             for (int i = 0; i < newPhone.Count; i++)
@@ -148,6 +92,7 @@ namespace WindowsForm
             }
             return -1;
         }
+
         int search2(string d)
         {
             for (int i = 0; i < newPhone.Count; i++)
@@ -166,48 +111,62 @@ namespace WindowsForm
             string d = textBox2.Text;
             int x = search(s);
             int y = search2(d);
-            if (x != -1 )
-            {
+            if (x != -1)
                 textBox2.Text = newPhone[x].Number;
-            }
             else if (y != -1)
                 textBox1.Text = newPhone[y].Name;
             else
-            MessageBox.Show("Чот походу нет его");
+                MessageBox.Show("Чот походу нет его");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-                    Phone x;
-                    x.Name = textBox1.Text;
-                    x.Number = textBox2.Text;
-                    int x1 = search(x.Name);
+            Phone x;
+            x.Name = textBox1.Text;
+            x.Number = textBox2.Text;
+            string line = null;
+            int x1 = search(x.Name);
+            int x2 = search(x.Number);
 
-                if (x1 != -1)
+            if (x1 != -1 || x2 != -1)
+            {
+                newPhone.RemoveAt(x1);
+                using (StreamReader reader = new StreamReader("Begin"))
+                {
+                    using (StreamWriter writer = new StreamWriter("End"))
                     {
-                        newPhone.RemoveAt(x1);
-                        textBox1.Text = "";
-                        textBox2.Text = "";
-                        MessageBox.Show("Больше ты его никогда не увидишь");
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            if (String.Compare(line, x.Name) == 0)
+                                continue;
+                            if (String.Compare(line, x.Number) == 0)
+                                continue;
+                            writer.WriteLine(line);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Хотелось бы его 'убрать', но я его не нашел :( ");
-                    }          
+                }
+                textBox1.Text = "";
+                textBox2.Text = "";
+                MessageBox.Show("Абонент ликвидирован -_о");
+            }
+            else
+            {
+                MessageBox.Show("Хотелось бы его 'убрать', но я его не нашел :(");
+            }
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            newPhone.Clear();
+            Close();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            StreamReader readd = new StreamReader("C:/Users/jurav/Desktop/text1.txt.txt");
-            string m;
-            while ((m = readd.ReadLine()) != null)
-            {
-                Phone ss;
-                ss.Name = m;
-                ss.Number = readd.ReadLine();
-                newPhone.Add(ss);
-            }
-            readd.Close();
+            newPhone.Clear();
+            var biggie = File.CreateText("Begin");
+            biggie.Close();
+            var biggie2 = File.CreateText("End");
+            biggie2.Close();
         }
     }
 }
