@@ -181,7 +181,7 @@ namespace WindowsForm
                 }
                 else if ((!String.IsNullOrEmpty(textBox2.Text) && !String.IsNullOrEmpty(textBox1.Text)))
                 {
-                    MessageBox.Show("Чтобы найти неприятеля, введите его номерок или наименование. Дальше я сделаю все сам ;)");
+                    MessageBox.Show("Введи или наименование, или номерок. Дальше я сделаю все сам ;)");
                 }
                 else if ((String.IsNullOrEmpty(textBox2.Text) && String.IsNullOrEmpty(textBox1.Text)))
                 {
@@ -223,7 +223,7 @@ namespace WindowsForm
                 }
                 else if ((!String.IsNullOrEmpty(textBox2.Text) && !String.IsNullOrEmpty(textBox1.Text)))
                 {
-                    MessageBox.Show("Чтобы найти неприятеля, введите его номерок или наименование. Дальше я сделаю все сам ;)");
+                    MessageBox.Show("Введи или наименование, или номерок. Дальше я сделаю все сам ;)");
                 }
                 else if ((String.IsNullOrEmpty(textBox2.Text) && String.IsNullOrEmpty(textBox1.Text)))
                 {
@@ -293,6 +293,10 @@ namespace WindowsForm
                 textBox2.Text = "";
                 MessageBox.Show("Абонент ликвидирован -_о");
             }
+            else if (String.IsNullOrEmpty(textBox2.Text) && String.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("Какой же ты мягкотелый... Не думал, что мой хозяин может быть таким. Попробуй все-таки решиться и ввести хоть какие-нибудь данные.");
+            }
             else
             {
                 MessageBox.Show("Хотелось бы его 'убрать', но я его не нашел :(");
@@ -300,7 +304,7 @@ namespace WindowsForm
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("Bloknotik"))
+            if (!File.Exists("Bloknotik") && !File.Exists("Bloknotikk"))
             {
                 var biggie = File.CreateText("Bloknotik");
                 biggie.Close();
