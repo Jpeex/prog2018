@@ -300,6 +300,11 @@ namespace WindowsForm
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!File.Exists("Bloknotik"))
+            {
+                var biggie = File.CreateText("Bloknotik");
+                biggie.Close();
+            }
             if (File.Exists("Bloknotik"))
                 goga = true;
             else if (File.Exists("Bloknotikk"))
